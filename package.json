@@ -1,0 +1,9 @@
+{
+  "name": "redaction-safe-sync",
+  "version": "0.1.0",
+  "description": "Five-state model for syncing values from providers that redact secrets: a redacted, unknown or absent value can never erase a value you already have.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=23.6" },
+  "scripts": { "test": "node --test test/*.test.ts" }
+}
