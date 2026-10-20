@@ -1,5 +1,7 @@
 # redaction-safe-sync
 
+[![test](https://github.com/volodymyrshk/redaction-safe-sync/actions/workflows/test.yml/badge.svg)](https://github.com/volodymyrshk/redaction-safe-sync/actions/workflows/test.yml)
+
 A small TypeScript model for syncing values (env vars, secrets, config) from a provider that hides some of them. The rule it enforces: **a value you can't read can never erase a value you already have.**
 
 ## The failure class
