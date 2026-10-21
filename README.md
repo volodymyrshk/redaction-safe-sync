@@ -2,6 +2,20 @@
 
 A small TypeScript model for syncing values (env vars, secrets, config) from a provider that hides some of them. The rule it enforces: **a value you can't read can never erase a value you already have.**
 
+## Try it in two minutes
+
+Node 23.6+; no dependencies, credentials or external services required.
+
+```bash
+git clone https://github.com/volodymyrshk/redaction-safe-sync.git
+cd redaction-safe-sync
+npm test
+```
+
+The tests first reproduce an overwrite with a naive sync, then exercise the five-state model, retries, stale writes and recovery. This is a small model you can inspect, with an in-memory store.
+
+**Code review route:** [source](src) → [regression and property tests](test) → [production scope](#scope). The important tradeoff: an unreadable value stays unresolved; it is never guessed to be an intentional empty string.
+
 ## The failure class
 
 Many provider APIs list write-only or "sensitive" values with a blank where the value should be. If a sync path reads that blank as a real empty string, the first time empty values become legal, it starts overwriting populated secrets with `""`. Nothing errors. The customer finds out when their app breaks.
